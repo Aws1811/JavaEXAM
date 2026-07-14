@@ -26,9 +26,9 @@
     </div>
 
     <div>
-        <form:label path="description">Content</form:label>
-        <form:textarea path="description" />
-        <form:errors path="description" />
+        <form:label path="content">Content</form:label>
+        <form:textarea path="content" />
+        <form:errors path="content" />
     </div>
 
     <input type="submit" value="Submit" />

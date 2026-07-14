@@ -9,10 +9,10 @@
 <body>
 <a href="/logout">logout</a>
 <h1><c:out value="${blog.title}" /></h1>
-<a href="/dashboard">back to the shelves</a>
+<a href="/dashboard">back to the dashboard</a>
 
         <p>Title :             <c:out value="${blog.title}" /> </p>
-        <p>Author:             <c:out value="${blog.user.userName}" />.</p>
+        <p>Author:             <c:out value="${user.firstName}" /> <c:out value="${user.lastName}" />.</p>
         <p>Category:           <c:out value="${blog.category}"/> </p>
         <p>Content:</p>
         <p><c:out value="${blog.content}" /></p>

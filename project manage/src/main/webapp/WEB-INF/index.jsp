@@ -160,11 +160,11 @@
 
         <form:form action="/register" method="post" modelAttribute="newUser">
 
-            <form:label path= "firstName">Username</form:label>
+            <form:label path= "firstName">first name</form:label>
             <form:input path= "firstName" placeholder="e.g. Jane" />
             <form:errors path="firstName" cssClass="error" />
 
-            <form:label path= "lastName">Username</form:label>
+            <form:label path= "lastName">last name</form:label>
             <form:input path= "lastName" placeholder="e.g. smith" />
             <form:errors path="lastName" cssClass="error" />
 

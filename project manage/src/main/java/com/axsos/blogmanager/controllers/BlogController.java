@@ -44,7 +44,7 @@ public String createBlogPage(HttpSession session,Model model){
     }
     Long id = (Long) session.getAttribute("id");
     model.addAttribute("user", userService.findUserById(id));
-    model.addAttribute("blogs",new Blog());
+    model.addAttribute("blog",new Blog());
         return "createblog";
 }
 
@@ -85,7 +85,7 @@ public String updateBlogPage(@PathVariable("blog_id")Long blog_id,HttpSession se
 
     @PostMapping("/edit/{blog_id}/update")
     public String updateBlog(HttpSession session, @PathVariable("blog_id") Long blog_id,
-                                @Valid @ModelAttribute("blogs") Blog blog, BindingResult result, Model model){
+                                @Valid @ModelAttribute("blog") Blog blog, BindingResult result, Model model){
         if (session.getAttribute("id") == null) {
             return "redirect:/";
         }
@@ -114,7 +114,7 @@ public  String deleteBlog(@PathVariable("blog_id") Long blog_id,HttpSession sess
     blogServices.deleteCallBlog(blog_id);
     return "redirect:/dashboard";
     }
-@RequestMapping("/{blog_id}")
+@RequestMapping("details/{blog_id}")
 public String showBlog(@PathVariable("blog_id")Long blog_id,HttpSession session,Model model) {
     if (session.getAttribute("id") == null) {
         return "redirect:/";

@@ -8,7 +8,7 @@
 </head>
 <body>
 <a href="/logout">logout</a>
-<p>Hello, <c:out value="${user.userName}" />. Welcome</p>
+<p>Hello, <c:out value="${user.firstName}" /> <c:out value="${user.lastName}" />. Welcome</p>
 <h1>All Blogs</h1>
 <a href="/create">+ new blog</a>
 
@@ -31,10 +31,10 @@
             <c:forEach var="blog" items="${availableBlogs}">
                 <tr>
                     <td><c:out value="${blog.title}" /></td>
-                    <td><c:out value="${blog.user.userName}"/> </td>
+                    <td><c:out value="${user.firstName}" /> <c:out value="${user.lastName}" /> </td>
                     <td><c:out value="${blog.createdAt}"/>  </td>
                     <td>
-                        <a href="/blogs/${blog.blog_id}">
+                        <a href="/details/${blog.blog_id}">
                             Read
                         </a>
                     </td>
@@ -64,8 +64,9 @@
             <c:forEach var="blog" items="${MyBlogs}">
                 <tr>
                     <td><c:out value="${blog.title}" /></td>
-                    <td><c:out value="${blog.user.userName}"/> </td>
+                    <td><c:out value="${user.firstName}" /> <c:out value="${user.lastName}" /> </td>
                     <td><c:out value="${blog.createdAt}"/>  </td>
+                    <td>
                         <a href="/edit/${blog.blog_id}">edit</a>
                         <a href="/delete/${blog.blog_id}">delete</a>
                     </td>
