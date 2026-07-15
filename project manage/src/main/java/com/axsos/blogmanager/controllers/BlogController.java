@@ -32,7 +32,7 @@ public String showBlogs(HttpSession session, Model model){
     Long id = (Long) session.getAttribute("id");
     User currentUser = userService.findUserById(id);
     model.addAttribute("user", currentUser);
-    model.addAttribute("availableBlogs", blogServices.getAllBlogs());
+    model.addAttribute("availableBlogs", blogServices.getAvailableBlogs(currentUser));
     model.addAttribute("MyBlogs", blogServices.getMyBlogs(currentUser));
     return "dashboard";
 }
@@ -123,28 +123,5 @@ public String showBlog(@PathVariable("blog_id")Long blog_id,HttpSession session,
     model.addAttribute("user", userService.findUserById(id));
         model.addAttribute("blog", blogServices.getSingleBlogById(blog_id));
         return "blogdetails";
-    }
-    // ===== blog FEATURE =====
-    // Marks the blog as borrowed by the logged-in user.
-    // Single-link action, same style as delete blog.
-    @RequestMapping("/{blog_id}/borrow")
-    public String borrowBlog(@PathVariable("blog_id") Long blog_id, HttpSession session){
-        if (session.getAttribute("id") == null) {
-            return "redirect:/";
-        }
-        Long id = (Long) session.getAttribute("id");
-        User currentUser = userService.findUserById(id);
-        blogServices.borrowBlog(blog_id, currentUser);
-        return "redirect:/blogs";
-    }
-
-    // Clears the borrower, returning the blog to the available pool.
-    @RequestMapping("/{blog_id}/return")
-    public String returnBlog(@PathVariable("blog_id") Long blog_id, HttpSession session){
-        if (session.getAttribute("id") == null) {
-            return "redirect:/";
-        }
-        blogServices.returnBlog(blog_id);
-        return "redirect:/blogs";
     }
 }

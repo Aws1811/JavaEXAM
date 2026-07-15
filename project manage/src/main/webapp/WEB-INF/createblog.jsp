@@ -10,7 +10,6 @@
 <body>
 
 <h1>Add a Blog to your blogs!</h1>
-<a href="/dashboard">back to the dashboard</a>
 
 <form:form action="/create/new" method="post" modelAttribute="blog">
     <div>
@@ -33,6 +32,9 @@
 
     <input type="submit" value="Submit" />
 </form:form>
+<br>
+<button><a href="/dashboard">cancel</a></button>
+
 
 </body>
 </html>

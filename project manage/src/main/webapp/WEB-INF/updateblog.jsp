@@ -9,8 +9,7 @@
 </head>
 <body>
 
-<h1>Change your Entry</h1>
-<a href="/dashboard">go back to dashboard</a>
+<h1>Edit Blog!</h1>
 
 <form:form action="/edit/${blog.blog_id}/update" method="post" modelAttribute="blog">
     <form:hidden path="blog_id" />
@@ -35,6 +34,8 @@
 
     <input type="submit" value="Submit" />
 </form:form>
+<br>
+<button><a href="/dashboard">cancel</a></button>
 
 </body>
 </html>

@@ -21,5 +21,7 @@
     <a href="/edit/${blog.blog_id}">edit</a>
     <a href="/delete/${blog.blog_id}">delete</a>
 </c:if>
+
+<a href="/details/${blog_id}/comments">Comments</a>
 </body>
 </html>

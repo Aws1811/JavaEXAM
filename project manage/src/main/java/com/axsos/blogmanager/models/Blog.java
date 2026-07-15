@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "blogs")
@@ -27,23 +28,27 @@ public class Blog {
     private String content;
 
     @Column(updatable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "MMM-dd")
     private Date createdAt;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "MMM-dd")
     private Date updatedAt;
 
     @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "id")
     private User user;
 
+    @OneToMany(mappedBy = "blog", fetch = FetchType.LAZY)
+    private List<Comment> comments;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "borrower_id")
     private User borrower;
 
     public Blog(){}
-    public Blog(Long blog_id, String title, String content, User user, User borrower,String category) {
+    public Blog(Long blog_id, String title, String content, User user, User borrower,String category,List<Comment> comments) {
         this.blog_id = blog_id;
+        this.comments = comments;
         this.borrower = borrower;
         this.title = title;
         this.user = user;
@@ -80,6 +85,14 @@ public class Blog {
 
     public Date getCreatedAt() {
         return createdAt;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public void setCreatedAt(Date createdAt) {

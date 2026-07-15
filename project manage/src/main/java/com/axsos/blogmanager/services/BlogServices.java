@@ -3,6 +3,7 @@ package com.axsos.blogmanager.services;
 import com.axsos.blogmanager.models.Blog;
 import com.axsos.blogmanager.models.User;
 import com.axsos.blogmanager.repositires.BlogRepo;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -50,15 +51,7 @@ public BlogServices(BlogRepo blogRepo){
  }
     // ===== Blog  FEATURE =====
 
-//    public List<Blog> getAvailableBlogs(User currentUser){
-//        return blogRepo.findByBorrowerIsNullOrUser(currentUser);
-//    }
 
-    // blogs the logged-in user is currently borrowing.
-    // Feeds the "blogs I'm Borrowing" table.
-//    public List<Blog> getBorrowedBlogs(User currentUser){
-//        return blogRepo.findByBorrower(currentUser);
-//    }
 
     // Marks a blog as borrowed by the logged-in user.
     public void borrowBlog(Long blog_id, User currentUser){

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@
                 <tr>
                     <td><c:out value="${blog.title}" /></td>
                     <td><c:out value="${user.firstName}" /> <c:out value="${user.lastName}" /> </td>
-                    <td><c:out value="${blog.createdAt}"/>  </td>
+                    <td> <c:out value="${blog.createdAt}"/></td>
                     <td>
                         <a href="/details/${blog.blog_id}">
                             Read
